@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.n52.matlab</groupId>
     <artifactId>matlab-control-parent</artifactId>
-    <version>5.0.0</version>
+    <version>5.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -57,7 +57,7 @@
         <url>https://github.com/52North/matlab-control</url>
         <connection>scm:git:https://github.com/52North/matlab-control.git</connection>
         <developerConnection>scm:git:https://github.com/52North/matlab-control.git</developerConnection>
-      <tag>v5.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <issueManagement>
