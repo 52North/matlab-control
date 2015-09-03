@@ -56,7 +56,7 @@ class ArrayPanel extends JPanel
     /**
      * Drop down lists to choose between object types.
      */
-    private final JComboBox<?>[] _optionBoxes;
+    private final JComboBox[] _optionBoxes;
     
     /**
      * Fields for inputting values.
@@ -69,12 +69,12 @@ class ArrayPanel extends JPanel
         this.setBackground(Color.WHITE);
         
         //Drop down lists and input fields
-        _optionBoxes = new JComboBox<?>[NUM_ENTRIES];
+        _optionBoxes = new JComboBox[NUM_ENTRIES];
         _entryFields = new JTextField[NUM_ENTRIES];
         
         for(int i = 0; i < NUM_ENTRIES; i++)
         {
-            _optionBoxes[i] = new JComboBox<String>(OPTIONS);
+            _optionBoxes[i] = new JComboBox(OPTIONS);
             _entryFields[i] = new JTextField(8);
             this.add(_optionBoxes[i]);
             this.add(_entryFields[i]);
