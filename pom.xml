@@ -5,37 +5,37 @@
     <artifactId>matlab-control-parent</artifactId>
     <version>5.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    
+
     <modules>
         <module>matlab-control</module>
         <module>matlab-control-jmistub</module>
         <module>matlab-control-demo</module>
     </modules>
-    
+
     <name>MATLAB Control Parent Project</name>
     <description>MATLAB Control Parent Project</description>
     <inceptionYear>2013</inceptionYear>
-    
+
     <url>https://github.com/52North/matlab-control</url>
-    
+
     <organization>
         <name>52°North Initiative for Geospatial Open Source Software GmbH</name>
         <url>http://52north.org</url>
     </organization>
-    
+
     <properties>
         <java-version>1.6</java-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-    
+
     <developers>
         <developer>
             <name>Joshua Kaplan</name>
             <email>nonother@gmail.com</email>
         </developer>
     </developers>
-    
+
     <contributors>
         <contributor>
             <name>Christian Autermann</name>
@@ -45,20 +45,20 @@
             <timezone>GMT+1</timezone>
         </contributor>
     </contributors>
-    
+
     <licenses>
         <license>
             <name>BSD 3-clause</name>
             <url>http://opensource.org/licenses/BSD-3-Clause</url>
         </license>
     </licenses>
-    
+
     <scm>
         <url>https://github.com/52North/matlab-control</url>
-        <connection>scm:git:git://github.com/52North/matlab-control.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/52North/matlab-control.git</developerConnection>
+        <connection>scm:git:https://github.com/52North/matlab-control.git</connection>
+        <developerConnection>scm:git:https://github.com/52North/matlab-control.git</developerConnection>
     </scm>
-    
+
     <issueManagement>
         <system>GitHub issues</system>
         <url>https://github.com/52North/matlab-control/issues?state=open</url>
@@ -79,7 +79,7 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -104,7 +104,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <build>
         <pluginManagement>
             <plugins>
@@ -291,7 +291,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <configuration>
-                            <useAgent>true</useAgent>   
+                            <useAgent>true</useAgent>
                         </configuration>
                         <executions>
                             <execution>
