@@ -406,10 +406,4 @@ class Configuration
         
         return available;
     }
-    public static void main(String[] args) throws URISyntaxException {
-		URI uri = new URI("vfs:/popo.jar");
-		System.out.println(uri.getPath());
-		System.out.println(uri.getScheme());
-		System.out.println(uri.getSchemeSpecificPart());
-	}
 }

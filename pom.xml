@@ -221,8 +221,7 @@
                     <author>false</author>
                     <quiet>true</quiet>
                     <nohelp>true</nohelp>
-                    <!-- -Xdoclint is only valid for JDK 8 -->
-					<!--  <additionalJOption>-Xdoclint:none</additionalJOption> -->
+                    <additionalJOption>-Xdoclint:none</additionalJOption>
                 </configuration>
                 <executions>
                     <execution>
