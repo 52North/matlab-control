@@ -261,8 +261,8 @@ class Configuration
                             else
                             {
                                 ClassLoader loader = Configuration.class.getClassLoader();
-                                throw new MatlabConnectionException("Support code location was determined improperly." +
-                                        " Location does not exist.\n" +
+                                throw new MatlabConnectionException("Support code location was determined improperly. " +
+                                        "Location does not exist.\n" +
                                         "Location determined as: " + file.getAbsolutePath() + "\n" +
                                         "Path: " + path + "\n" + 
                                         "URI Location: " + uri + "\n" +
@@ -291,15 +291,58 @@ class Configuration
                     //path was null
                     else
                     {
-                        ClassLoader loader = Configuration.class.getClassLoader();
-                        throw new MatlabConnectionException("Support code location could not be determined. " +
-                                "Could not get path from URI location.\n" +
-                                "URI Location: " + uri + "\n" +
-                                "URL Location: " + url + "\n" +
-                                "Code Source: " + codeSource + "\n" +
-                                "Protection Domain: " + domain + "\n" +
-                                "Class Loader: " + loader +
-                                (loader == null ? "" : "\nClass Loader Class: " +loader.getClass()));
+                    	// Start ad-hoc "fix" when running inside jboss (or similar)
+                    	// where the jar file is not returned as a file resource.
+                    	if (uri.toString().startsWith("jar:file:")) {
+	                    	path = uri.toString().replace("jar:file:", "").replace("!/", "");
+	                    	
+							try {
+								File file = new File(path).getCanonicalFile();
+								if(file.exists())
+								{
+									return file.getAbsolutePath();
+								}
+								else {
+									ClassLoader loader = Configuration.class.getClassLoader();
+									throw new MatlabConnectionException("Support code location was determined improperly. " +
+											"Location does not exist (*).\n" +
+											"Location determined as: " + file.getAbsolutePath() + "\n" +
+											"Path: " + path + "\n" + 
+											"URI Location: " + uri + "\n" +
+											"URL Location: " + url + "\n" +
+											"Code Source: " + codeSource + "\n" +
+											"Protection Domain: " + domain + "\n" +
+											"Class Loader: " + loader +
+											(loader == null ? "" : "\nClass Loader Class: " +loader.getClass()));
+								}
+							}               
+							//Unable to resolve canconical path (2nd attempt)
+	                        catch(IOException e)
+	                        {
+	                            ClassLoader loader = Configuration.class.getClassLoader();
+	                            throw new MatlabConnectionException("Support code location could not be determined. " +
+	                                    "Could not resolve canonical path.\n" +
+	                                    "Path: " + path + "\n" +
+	                                    "URI Location: " + uri + "\n" +
+	                                    "URL Location: " + url + "\n" +
+	                                    "Code Source: " + codeSource + "\n" +
+	                                    "Protection Domain: " + domain + "\n" +
+	                                    "Class Loader: " + loader +
+	                                    (loader == null ? "" : "\nClass Loader Class: " +loader.getClass()), e);
+	                        }
+							// End of "fix" for running inside jboss
+                    	} else {
+                    		// Original Exception:
+                    		ClassLoader loader = Configuration.class.getClassLoader();
+                    		throw new MatlabConnectionException("Support code location could not be determined. " +
+									"Could not get path from URI location.\n" +
+									"URI Location: " + uri + "\n" +
+									"URL Location: " + url + "\n" +
+									"Code Source: " + codeSource + "\n" +
+									"Protection Domain: " + domain + "\n" +
+									"Class Loader: " + loader +
+									(loader == null ? "" : "\nClass Loader Class: " +loader.getClass()));
+                    	}
                     }
                 }
                 //Unable to convert URL to URI
