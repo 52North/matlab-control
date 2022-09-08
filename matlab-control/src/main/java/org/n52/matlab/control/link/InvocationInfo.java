@@ -432,6 +432,9 @@ class InvocationInfo
                 {
                     //File should not exist, but confirm it
                     File destFile = new File(unzipDir, entry.getName());
+                    if(!destFile.toPath().normalize().startsWith(unzipDir.toPath().normalize())) {
+                        throw new RuntimeException("Bad zip entry");
+                    }
                     if(destFile.exists())
                     {
                         throw new LinkingException("Cannot unzip file, randomly generated path already exists\n" +
